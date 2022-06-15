@@ -22,6 +22,17 @@ entries:
     urls:
     - https://github.com/psbrar99/hchart/releases/download/app2-0.1.0/app2-0.1.0.tgz
     version: 0.1.0
+  app3:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-06-15T14:44:43.198021-06:00"
+    description: A Helm chart for Kubernetes
+    digest: 918faccb5b0430b435a4c58c2533edf61a1c6a587ea8d7eeb62c399964d2d872
+    name: app3
+    type: application
+    urls:
+    - https://github.com/psbrar99/hchart/releases/download/app3-0.1.0/app3-0.1.0.tgz
+    version: 0.1.0
   discovery:
   - apiVersion: v1
     created: "2022-06-14T20:05:31.849715-06:00"
@@ -38,4 +49,21 @@ entries:
     urls:
     - https://github.com/psbrar99/hchart/releases/download/discovery-1.10.3/discovery-1.10.3.tgz
     version: 1.10.3
-generated: "2022-06-14T20:05:31.849729-06:00"
+  istiod:
+  - apiVersion: v1
+    appVersion: 1.13.3-tetrate-v0
+    created: "2022-06-15T14:44:43.461476-06:00"
+    description: Helm chart for istio control plane
+    digest: 96bf1cc8820ccae198cc2ded67f9af0b28cc5c4cde8536a5b3236e0dd77808e4
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - istiod
+    - istio-discovery
+    name: istiod
+    sources:
+    - http://github.com/istio/istio
+    urls:
+    - https://github.com/psbrar99/hchart/releases/download/istiod-1.13.3-tetrate-v0/istiod-1.13.3-tetrate-v0.tgz
+    version: 1.13.3-tetrate-v0
+generated: "2022-06-15T14:44:43.461501-06:00"
