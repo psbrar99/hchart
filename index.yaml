@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  try1:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-06-15T16:41:54.027904-06:00"
+    description: A Helm chart for Kubernetes
+    digest: 41edf1afe3ba4f2c68292fc9f164424cc3e0c87067c5b751402693e29ff63c9a
+    name: try1
+    type: application
+    urls:
+    - https://github.com/psbrar99/hchart/releases/download/try1-0.1.0/try1-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-06-15T16:41:54.027931-06:00"
