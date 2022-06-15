@@ -51,7 +51,6 @@ entries:
     version: 1.10.3
   istiod:
   - apiVersion: v1
-    appVersion: 1.13.3-tetrate-v0
     created: "2022-06-15T15:20:13.262742-06:00"
     description: Helm chart for istio control plane
     digest: 48ef85388b31a2fff7cced85680a3c5bdf83dc1140d7925aa38c310f454d6e54
