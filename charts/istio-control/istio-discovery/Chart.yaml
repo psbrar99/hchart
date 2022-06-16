@@ -1,8 +1,8 @@
 apiVersion: v2
 name: istiod
-version: 1.13.3-tetrate-v0
+version: 1.13.3
 appVersion: "1.13.3-tetrate-v0"
-description: Helm chart for istio control plane
+description: Helm chart for istio control plane installations fips
 keywords:
   - istio
   - istiod
