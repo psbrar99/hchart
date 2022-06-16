@@ -49,7 +49,39 @@ entries:
     urls:
     - https://github.com/psbrar99/hchart/releases/download/gateway-1.13.2-tetrate-v0/gateway-1.13.2-tetrate-v0.tgz
     version: 1.13.2-tetrate-v0
+  - apiVersion: v2
+    appVersion: 1.13.2-tetrate-v0
+    created: "2022-06-15T19:14:50.738702-06:00"
+    description: Helm chart for deploying Istio gateways
+    digest: decfc6bf710be8a6c43f20e429faa7138d19e850abd8852b3f7efd411fd7f1bb
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: gateway
+    sources:
+    - http://github.com/istio/istio
+    type: application
+    urls:
+    - https://github.com/psbrar99/hchart/releases/download/gateway-1.13.2-tetrate-v0/gateway-1.13.2-tetrate-v0.tgz
+    version: 1.13.2-tetrate-v0
   istiod:
+  - apiVersion: v2
+    appVersion: 1.13.4-tetrate-v0
+    created: "2022-06-15T19:14:50.976458-06:00"
+    description: A Helm chart for istio
+    digest: 52a15798e6c6f83d792564c200944fb21335b608a798ca76657bea0f8af8be83
+    icon: https://istio.io/latest/favicons/android-192x192.png
+    keywords:
+    - istio
+    - gateways
+    name: istiod
+    sources:
+    - http://github.com/istio/istio
+    type: application
+    urls:
+    - https://github.com/psbrar99/hchart/releases/download/istiod-1.13.4/istiod-1.13.4.tgz
+    version: 1.13.4
   - apiVersion: v2
     created: "2022-06-15T19:00:27.31671-06:00"
     description: A Helm chart for istio
@@ -76,4 +108,4 @@ entries:
     urls:
     - https://github.com/psbrar99/hchart/releases/download/try1-0.1.0/try1-0.1.0.tgz
     version: 0.1.0
-generated: "2022-06-15T19:08:05.511995-06:00"
+generated: "2022-06-15T19:14:51.105537-06:00"
