@@ -4,9 +4,7 @@ on:
     tags:
       - "1.*"
 jobs:
-  release:
-    permissions:
-      contents: write
+  dispatch:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v6
