@@ -1,5 +1,6 @@
 name: Trigger release
 on:
+  workflow_dispatch:
   push:
     tags:
       - "1.*"
