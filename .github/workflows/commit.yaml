@@ -1,0 +1,21 @@
+name: Trigger release
+on:
+  push:
+    tags:
+      - "1.*"
+jobs:
+  release:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+            github-token: ${{ secrets.DEPLOY}}
+            script: |
+                await github.rest.actions.createWorkflowDispatch({
+                owner: 'psbrar99',
+                repo: 'helmchart',
+                workflow_id: 'charts.yml',
+                ref: 'main'
+                })
