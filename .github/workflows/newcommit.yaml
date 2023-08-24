@@ -22,7 +22,8 @@ jobs:
           role-to-assume: arn:aws:iam::354280132276:role/oidc_tetratelabs_istio
           role-session-name: samplerolesession
           aws-region: ${{ env.AWS_REGION }}
+      - uses: sigstore/cosign-installer@main
       # Upload a file to AWS s3
-      - name:  Copy index.html to s3
+      - name:  cosign
         run: |
-          aws s3 cp ./index.html s3://${{ env.BUCKET_NAME }}/
+          cosign sign -y gcr.io/tid-testing/proxyv2:v7-debug-1.18.0
