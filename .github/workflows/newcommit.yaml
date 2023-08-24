@@ -34,5 +34,7 @@ jobs:
       - uses: sigstore/cosign-installer@main
       # Upload a file to AWS s3
       - name:  cosign
-        run: |
-          cosign sign -y gcr.io/tid-testing/proxyv2:v7-debug-1.18.0
+        run: bash ./images.sh
+        env: 
+          TAG: 1.17.3-tetratefips-v3
+          HUB: 'gcr.io/tid-testing'
