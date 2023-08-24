@@ -32,6 +32,7 @@ jobs:
       - run: |
             gcloud auth configure-docker
       - uses: sigstore/cosign-installer@main
+      - uses: imjasonh/setup-crane@v0.3
       # Upload a file to AWS s3
       - name:  cosign
         run: bash ./images.sh
