@@ -18,6 +18,6 @@ IMAGE_SUFFIXES=("" "-debug" "-distroless")
 for image in "${IMAGES[@]}"; do
   for suffix in "${IMAGE_SUFFIXES[@]}"; do
     DIGEST=$(crane digest $HUB/${image}:${TAG}${suffix})
-    cosign sign -y $HUB/${image}@$digest
+    cosign sign -y $HUB/${image}@$DIGEST
   done
 done
