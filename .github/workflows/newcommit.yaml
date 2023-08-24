@@ -10,6 +10,7 @@ env:
 permissions:
       id-token: write   # This is required for requesting the JWT
       contents: read    # This is required for actions/checkout
+      packages: write
 jobs:
   S3PackageUpload:
     runs-on: ubuntu-latest
@@ -22,6 +23,14 @@ jobs:
           role-to-assume: arn:aws:iam::354280132276:role/oidc_tetratelabs_istio
           role-session-name: samplerolesession
           aws-region: ${{ env.AWS_REGION }}
+      - uses: google-github-actions/setup-gcloud@v0
+        with:
+            project_id: "tid-testing"
+            service_account_key: ${{ secrets.TEMP_SEC }}
+        env:
+            HUB: gcr.io/tid-testing
+      - run: |
+            gcloud auth configure-docker
       - uses: sigstore/cosign-installer@main
       # Upload a file to AWS s3
       - name:  cosign
