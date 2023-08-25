@@ -23,14 +23,21 @@ jobs:
       #     role-to-assume: arn:aws:iam::354280132276:role/oidc_tetratelabs_istio
       #     role-session-name: samplerolesession
       #     aws-region: ${{ env.AWS_REGION }}
-      - uses: google-github-actions/setup-gcloud@v0
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
         with:
-            project_id: "tid-testing"
-            service_account_key: ${{ secrets.TEMP_SEC }}
-        env:
-            HUB: gcr.io/tid-testing
-      - run: |
-            gcloud auth configure-docker
+          token_format: 'access_token'
+          workload_identity_provider: 'projects/733020594933/locations/global/workloadIdentityPools/image-signing-oidc/providers/githuboidcprovider'
+          service_account: 'image-signing-keyless-sa@tid-testing.iam.gserviceaccount.com'
+      # - uses: google-github-actions/setup-gcloud@v0
+      #   with:
+      #       project_id: "tid-testing"
+      #       service_account_key: ${{ secrets.TEMP_SEC }}
+      #   env:
+      #       HUB: gcr.io/tid-testing
+      # - run: |
+      #       gcloud auth configure-docker
       - uses: sigstore/cosign-installer@main
       - uses: imjasonh/setup-crane@v0.3
       # Upload a file to AWS s3
