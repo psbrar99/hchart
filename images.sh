@@ -15,6 +15,6 @@ IMAGE_SUFFIXES=("" "-debug" "-distroless")
 for image in "${IMAGES[@]}"; do
   for suffix in "${IMAGE_SUFFIXES[@]}"; do
     DIGEST=$(crane digest $HUB/${image}:${TAG}${suffix})
-    cosign sign -y --identity-token=$(gcloud auth print-identity-token --audiences=sigstore) $HUB/${image}@$DIGEST
+    cosign sign -y --identity-token=$(gcloud auth print-identity-token) $HUB/${image}@$DIGEST
   done
 done
