@@ -38,3 +38,4 @@ jobs:
         env: 
           TAG: 1.17.3-tetratefips-v3
           HUB: 'gcr.io/tid-testing'
+          ACCESS_TOKEN: '${{ steps.auth.outputs.access_token }}'
