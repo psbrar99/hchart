@@ -32,12 +32,12 @@ jobs:
           service_account: 'image-signing-keyless-sa@tid-testing.iam.gserviceaccount.com'
         env:
           HUB: gcr.io/tid-testing
-      - uses: google-github-actions/setup-gcloud@v0
-        with:
-            project_id: "tid-testing"
-            service_account_key: ${{ secrets.TEMP_SEC }}
-        env:
-            HUB: gcr.io/tid-testing
+      # - uses: google-github-actions/setup-gcloud@v0
+      #   with:
+      #       project_id: "tid-testing"
+      #       service_account_key: ${{ secrets.TEMP_SEC }}
+      #   env:
+      #       HUB: gcr.io/tid-testing
       # - uses: 'docker/login-action@v1'
       #   with:
       #     registry: 'gcr.io' # or REGION-docker.pkg.dev
@@ -48,11 +48,11 @@ jobs:
       # - run: |
       #       gcloud auth configure-docker
       - uses: sigstore/cosign-installer@main
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v1'
       - uses: imjasonh/setup-crane@v0.3
       - run: |-
           echo '${{ steps.auth.outputs.access_token }}' | docker login -u oauth2accesstoken --password-stdin https://gcr.io
-          CREDENTIAL_FILE_NAME=$(echo ${GOOGLE_APPLICATION_CREDENTIALS} | awk -F/ '{print $NF}')
-          gcloud auth activate-service-account --key-file="/work/gha-creds-bd7ecae55bec192f.json"
       # Upload a file to AWS s3 /home/runner/work/hchart/hchart
       - name:  cosign
         run: bash ./images.sh
