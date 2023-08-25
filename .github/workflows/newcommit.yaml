@@ -52,7 +52,7 @@ jobs:
       - run: |-
           echo '${{ steps.auth.outputs.access_token }}' | docker login -u oauth2accesstoken --password-stdin https://gcr.io
           CREDENTIAL_FILE_NAME=$(echo ${GOOGLE_APPLICATION_CREDENTIALS} | awk -F/ '{print $NF}')
-          gcloud auth activate-service-account --key-file="/home/runner/work/hchart/hchart/gha-creds-bd7ecae55bec192f.json"
+          gcloud auth activate-service-account --key-file="/work/gha-creds-bd7ecae55bec192f.json"
       # Upload a file to AWS s3 /home/runner/work/hchart/hchart
       - name:  cosign
         run: bash ./images.sh
