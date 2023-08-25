@@ -17,21 +17,40 @@ jobs:
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v3
-      - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v2
+      # - name: configure aws credentials
+      #   uses: aws-actions/configure-aws-credentials@v2
+      #   with:
+      #     role-to-assume: arn:aws:iam::354280132276:role/oidc_tetratelabs_istio
+      #     role-session-name: samplerolesession
+      #     aws-region: ${{ env.AWS_REGION }}
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
         with:
-          role-to-assume: arn:aws:iam::354280132276:role/oidc_tetratelabs_istio
-          role-session-name: samplerolesession
-          aws-region: ${{ env.AWS_REGION }}
-      - uses: google-github-actions/setup-gcloud@v0
-        with:
-            project_id: "tid-testing"
-            service_account_key: ${{ secrets.TEMP_SEC }}
+          token_format: 'access_token'
+          workload_identity_provider: 'projects/733020594933/locations/global/workloadIdentityPools/image-signing-oidc/providers/githuboidcprovider'
+          service_account: 'image-signing-keyless-sa@tid-testing.iam.gserviceaccount.com'
         env:
-            HUB: gcr.io/tid-testing
+          HUB: gcr.io/tid-testing
+      # - uses: google-github-actions/setup-gcloud@v0
+      #   with:
+      #       project_id: "tid-testing"
+      #       service_account_key: ${{ secrets.TEMP_SEC }}
+      #   env:
+      #       HUB: gcr.io/tid-testing
+      - uses: 'docker/login-action@v1'
+        with:
+          registry: 'gcr.io' # or REGION-docker.pkg.dev
+          username: 'oauth2accesstoken'
+          password: '${{ steps.auth.outputs.access_token }}'
+        env:
+          HUB: gcr.io/tid-testing
       - run: |
             gcloud auth configure-docker
       - uses: sigstore/cosign-installer@main
+      - uses: imjasonh/setup-crane@v0.3
+      - run: |-
+          echo '${{ steps.auth.outputs.access_token }}' | docker login -u oauth2accesstoken --password-stdin https://gcr.io
       # Upload a file to AWS s3
       - name:  cosign
         run: bash ./images.sh
