@@ -36,8 +36,8 @@ jobs:
       #       service_account_key: ${{ secrets.TEMP_SEC }}
       #   env:
       #       HUB: gcr.io/tid-testing
-      # - run: |
-      #       gcloud auth configure-docker
+      - run: |
+            gcloud auth configure-docker
       - uses: sigstore/cosign-installer@main
       - uses: imjasonh/setup-crane@v0.3
       # Upload a file to AWS s3
