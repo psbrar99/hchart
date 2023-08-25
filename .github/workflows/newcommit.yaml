@@ -51,7 +51,7 @@ jobs:
       - uses: imjasonh/setup-crane@v0.3
       - run: |-
           echo '${{ steps.auth.outputs.access_token }}' | docker login -u oauth2accesstoken --password-stdin https://gcr.io
-          gcloud auth activate-service-account --key-file='/home/runner/work/hchart/hchart/gha-creds-2ea174ce018660f7.json'
+          gcloud auth activate-service-account --key-file="/home/runner/work/hchart/hchart/gha-creds-2ea174ce018660f7.json"
       # Upload a file to AWS s3
       - name:  cosign
         run: bash ./images.sh
