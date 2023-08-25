@@ -46,10 +46,11 @@ jobs:
         env:
           HUB: gcr.io/tid-testing
       - run: |
-            gcloud auth login 
             gcloud auth configure-docker
       - uses: sigstore/cosign-installer@main
       - uses: imjasonh/setup-crane@v0.3
+      - run: |-
+          echo '${{ steps.auth.outputs.access_token }}' | docker login -u oauth2accesstoken --password-stdin https://gcr.io
       # Upload a file to AWS s3
       - name:  cosign
         run: bash ./images.sh
