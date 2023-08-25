@@ -46,6 +46,7 @@ jobs:
         env:
           HUB: gcr.io/tid-testing
       - run: |
+            gcloud auth login 
             gcloud auth configure-docker
       - uses: sigstore/cosign-installer@main
       - uses: imjasonh/setup-crane@v0.3
