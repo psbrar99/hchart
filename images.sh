@@ -18,6 +18,6 @@ IMAGE_SUFFIXES=("" "-debug" "-distroless")
 for image in "${IMAGES[@]}"; do
   for suffix in "${IMAGE_SUFFIXES[@]}"; do
     DIGEST=$(crane digest $HUB/${image}:${TAG}${suffix})
-    cosign sign --identity-token=$(${ACCESS_TOKEN} --audiences=sigstore --include-email --impersonate-service-account image-signing-keyless-sa@tid-testing.iam.gserviceaccount.com)
+    cosign sign -y --identity-token=$(${ACCESS_TOKEN} --audiences=sigstore --include-email --impersonate-service-account image-signing-keyless-sa@tid-testing.iam.gserviceaccount.com) $HUB/${image}@$digest
   done
 done
