@@ -8,7 +8,8 @@ BASEDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
 
 IMAGES=(install-cni
-proxyv2)
+proxyv2
+app_sidecar_ubuntu_xenial)
 
 IMAGE_SUFFIXES=("" "-debug" "-distroless")
 
