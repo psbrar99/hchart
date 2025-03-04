@@ -22,7 +22,7 @@ runs:
         echo "CIRCLE_SHA1=pr-${{ github.event.pull_request.number }}-${{ github.event.pull_request.head.sha }}" >> "$GITHUB_ENV"
         echo "CIRCLE_BRANCH=${GITHUB_HEAD_REF}" >> "$GITHUB_ENV"
     
-    - if: ${{ github.base_ref == null }}
+    - if: ${{ github.base_ref == null && github.ref_type != 'tag' }}
       name: Set environment variables for direct pushes
       shell: bash
       run: |
