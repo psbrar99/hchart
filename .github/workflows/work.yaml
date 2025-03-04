@@ -16,9 +16,9 @@ jobs:
 
       # Invoke the composite action.
       - name: Set build environment variables
-        uses: ./.github/actions/build-env-vars
+        uses: ./.github/actions/build-env-var
 
-      - name: Display environment variables
+      - name: Display environment variable
         run: |
           echo "CIRCLE_SHA1: ${{ env.CIRCLE_SHA1 }}"
           echo "CIRCLE_BRANCH: ${{ env.CIRCLE_BRANCH }}"
