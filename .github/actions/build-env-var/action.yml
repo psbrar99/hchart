@@ -26,5 +26,5 @@ runs:
       name: Set environment variables for direct pushes
       shell: bash
       run: |
-        echo "CIRCLE_SHA1=${GITHUB_SHA}" >> "$GITHUB_ENV"
-        echo "CIRCLE_BRANCH=push-${GITHUB_REF_NAME}" >> "$GITHUB_ENV"
+        echo "CIRCLE_SHA1=push-${GITHUB_SHA}" >> "$GITHUB_ENV"
+        echo "CIRCLE_BRANCH=${GITHUB_REF_NAME}" >> "$GITHUB_ENV"
