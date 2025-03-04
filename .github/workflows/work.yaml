@@ -1,0 +1,33 @@
+name: Test Set Build Env Vars
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - '*'
+  pull_request:
+
+jobs:
+  test-env-vars:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Invoke the composite action.
+      - name: Set build environment variables
+        uses: ./.github/actions/build-env-vars
+
+      - name: Display environment variables
+        run: |
+          echo "CIRCLE_SHA1: ${{ env.CIRCLE_SHA1 }}"
+          echo "CIRCLE_BRANCH: ${{ env.CIRCLE_BRANCH }}"
+          if [ ! -z "${{ env.RELEASE_TAG }}" ]; then
+            echo "RELEASE_TAG: ${{ env.RELEASE_TAG }}"
+          fi
+          if [ ! -z "${{ env.CIRCLE_TAG }}" ]; then
+            echo "CIRCLE_TAG: ${{ env.CIRCLE_TAG }}"
+          fi
+          if [ ! -z "${{ env.TAG }}" ]; then
+            echo "TAG: ${{ env.TAG }}"
+          fi
